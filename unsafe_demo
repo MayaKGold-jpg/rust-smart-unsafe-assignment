@@ -1,0 +1,19 @@
+fn main() {
+    let mut num = 10;
+
+    let ptr = &mut num as *mut i32;
+
+    unsafe {
+        *ptr = 25;
+        println!("New value through pointer: {}", *ptr);
+    }
+
+    println!("Value of num: {}", num);
+
+    // Dangerous examples (do not run):
+    // let null_ptr: *const i32 = std::ptr::null();
+    // Dereferencing null_ptr would crash.
+
+    // Dangling pointer example:
+    // A pointer to memory already freed can cause undefined behavior.
+}
